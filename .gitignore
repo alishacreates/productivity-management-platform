@@ -1,3 +1,4 @@
+
 # Node modules (if you ever use npm)
 node_modules/
 
@@ -17,3 +18,4 @@ Thumbs.db
 # Build / dist (if used later)
 dist/
 build/
+.env

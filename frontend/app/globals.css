@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Default theme tokens (Dark) — overridden by ThemeContext ── */
+:root {
+  --bg-base:        #020817;
+  --bg-surface:     #0f172a;
+  --bg-surface-2:   #1e293b;
+  --bg-surface-3:   #334155;
+  --border:         rgba(148, 163, 184, 0.10);
+  --accent:         #6366f1;
+  --accent-light:   #818cf8;
+  --accent-glow:    rgba(99, 102, 241, 0.25);
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+  --sidebar-bg:     rgba(15, 23, 42, 0.85);
+  --navbar-bg:      rgba(2, 8, 23, 0.85);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--bg-base); min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; height: 4px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--bg-surface-3); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Component utilities ────────────────────────────────────── */
+@layer components {
+
+  .glass {
+    background: var(--bg-surface-2);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+
+  .card {
+    @apply glass rounded-2xl p-5 transition-all duration-200;
+  }
+  .card:hover {
+    border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 8%, transparent);
+  }
+
+  .btn-primary {
+    @apply font-medium px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 text-sm;
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { filter: brightness(1.12); }
+
+  .btn-secondary {
+    @apply font-medium px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 text-sm border;
+    background: var(--bg-surface-2);
+    color: var(--text-secondary);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover { background: var(--bg-surface-3); color: var(--text-primary); }
+
+  .btn-danger {
+    @apply font-medium px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 text-sm;
+    background: rgba(239, 68, 68, 0.10);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.20);
+  }
+  .btn-danger:hover { background: rgba(239, 68, 68, 0.20); }
+
+  .input {
+    @apply w-full rounded-xl px-4 py-2.5 text-sm transition-all duration-200;
+    background: var(--bg-base);
+    border: 1px solid var(--bg-surface-3);
+    color: var(--text-primary);
+  }
+  .input::placeholder { color: var(--text-muted); }
+  .input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+
+  .label {
+    @apply block text-xs font-medium mb-1.5 uppercase tracking-wider;
+    color: var(--text-muted);
+  }
+
+  .badge-high      { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium; background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+  .badge-medium    { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium; background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+  .badge-low       { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium; background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+  .badge-pending   { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium; background: var(--bg-surface-3); color: var(--text-secondary); border: 1px solid var(--border); }
+  .badge-completed { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium; background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+}
+
+/* ── Page enter animation ───────────────────────────────────── */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageIn 0.35s ease-out forwards; }
+
+/* ── Smooth theme transitions ───────────────────────────────── */
+:not(.animate-spin):not([class*='animate-']) {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
