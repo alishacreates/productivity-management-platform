@@ -1,21 +1,30 @@
-
-# Node modules (if you ever use npm)
+# dependencies
 node_modules/
 
-# Logs
-*.log
+# next.js
+.next/
+out/
 
-# OS files
+# env
+.env*
+.env
+
+# misc
 .DS_Store
-Thumbs.db
+*.pem
 
-# Environment variables (future use)
-.env
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# VS Code settings (optional)
-.vscode/
-
-# Build / dist (if used later)
-dist/
+# build
 build/
-.env
+coverage/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

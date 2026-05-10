@@ -9,6 +9,7 @@ const NAV = [
   { href: '/focus',  label: 'Focus',     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" strokeLinecap="round" strokeLinejoin="round"/></svg> },
   { href: '/goals',  label: 'Goals',     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> },
   { href: '/notes',  label: 'Notes',     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" strokeLinecap="round" strokeLinejoin="round"/><polyline points="14 2 14 8 20 8" strokeLinecap="round" strokeLinejoin="round"/><line x1="16" y1="13" x2="8" y2="13" strokeLinecap="round"/><line x1="16" y1="17" x2="8" y2="17" strokeLinecap="round"/></svg> },
+  { href: '/areas',  label: 'Life Areas', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path d="M12 21s-6.5-4.35-9-8.5C1.2 9.3 3.1 5 7.2 5c2.2 0 3.5 1.2 4.8 2.8C13.3 6.2 14.6 5 16.8 5 20.9 5 22.8 9.3 21 12.5 18.5 16.65 12 21 12 21z" strokeLinecap="round" strokeLinejoin="round"/></svg> },
 ];
 
 export default function Sidebar() {
@@ -29,7 +30,7 @@ export default function Sidebar() {
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {NAV.map(({ href, label, icon }) => {
-          const active = pathname === href;
+          const active = href === '/' ? pathname === '/' : pathname.startsWith(href);
           return (
             <Link key={href} href={href}
               className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200"
