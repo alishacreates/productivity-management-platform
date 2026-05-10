@@ -1,5 +1,5 @@
-const Task = require('../models/Task');
-const asyncHandler = require('../middleware/asyncHandler');
+import Task from "../models/Task";
+import asyncHandler from "../middleware/asyncHandler";
 
 // @desc    Get all tasks
 // @route   GET /api/tasks

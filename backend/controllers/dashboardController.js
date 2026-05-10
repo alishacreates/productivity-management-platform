@@ -1,8 +1,8 @@
-const Task = require('../models/Task');
-const Habit = require('../models/Habit');
-const FocusSession = require('../models/FocusSession');
-const Goal = require('../models/Goal');
-const asyncHandler = require('../middleware/asyncHandler');
+import Task from '../models/Task';
+import Habit from '../models/Habit';
+import FocusSession from '../models/FocusSession';
+import Goal from '../models/Goal';
+import asyncHandler from '../middleware/asyncHandler';
 
 // @desc    Get dashboard overview stats
 // @route   GET /api/dashboard
@@ -79,4 +79,4 @@ const getDashboardStats = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { getDashboardStats };
+export default getDashboardStats;
